@@ -97,7 +97,6 @@ function Home({ goToBoost }: BoostProps) {
       // }
       const response = await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress });
       // const res = await response.data;
-      console.log("--------asdfsadfadsfasdf--------->", response.data);
       if (response && response.data) {
         setLevelData({
           level: response?.data?.currentLevel,
@@ -111,7 +110,7 @@ function Home({ goToBoost }: BoostProps) {
       console.error("There was a problem with the fetch operation:", error);
     }
   }
-
+  console.log("leveldate---------------------->", levelData);
   async function fetchData(walletAddress: string, userId: string) {
     if (isFetching.current) return;
     isFetching.current = true;
