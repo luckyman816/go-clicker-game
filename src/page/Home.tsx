@@ -100,7 +100,7 @@ function Home({goToBoost}: BoostProps) {
       console.log("--------asdfsadfadsfasdf--------->", response.data);
       if (response && response.data) {
         setLevelData({
-          level: response?.data?.level,
+          level: response?.data?.currentLevel,
           coinsToLevelUp: response?.data?.coinsToLevelUp
         });
       }
