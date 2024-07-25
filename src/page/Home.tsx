@@ -200,23 +200,27 @@ function Home({goToBoost}: BoostProps) {
 
   async function fetchCreateTap(walletAddress: string, tapAmount: number) {
     try {
-      const response = await fetch(`${backendUrl}/api/v1/users/taps`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          wallet_address: walletAddress,
-          tap_amount: Number(levelData?.level) -1 ,
-          tap_remaining: remainedEnergy - tapAmount
-        })
-      });
+      // const response = await fetch(`${backendUrl}/api/v1/users/taps`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({
+      //     wallet_address: walletAddress,
+      //     tap_amount: Number(levelData?.level) -1 ,
+      //     tap_remaining: remainedEnergy - tapAmount
+      //   })
+      // });
+      const response =  await axios.post("/api/v1/users/taps", {
+        wallet_address: walletAddress,
+        tap_amount: Number(levelData?.level) -1 ,
+        tap_remaining: remainedEnergy - tapAmount
+      })
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error status: ${response.status}`);
+      // }
 
-      if (!response.ok) {
-        throw new Error(`HTTP error status: ${response.status}`);
-      }
-
-      const data = await response.json();
+      const data = await response.data();
       if (!data.error) {
         setRemainedEnergy(data.data.remaining);
       }
