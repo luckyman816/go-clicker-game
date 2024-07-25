@@ -14,7 +14,7 @@ interface LevelData {
 interface BoostProps {
   goToBoost: () => void;
 }
-function Home({goToBoost}: BoostProps) {
+function Home({ goToBoost }: BoostProps) {
   // const backendUrl = "https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com"
   const address = useTonAddress();
   const { remainedEnergy, setRemainedEnergy, startRecovery, stopRecovery } =
@@ -95,7 +95,7 @@ function Home({goToBoost}: BoostProps) {
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-      const response =await axios.post("/api/v1/users/user-lvl", {wallet_address: walletAddress});
+      const response = await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress });
       // const res = await response.data;
       console.log("--------asdfsadfadsfasdf--------->", response.data);
       if (response && response.data) {
@@ -126,7 +126,7 @@ function Home({goToBoost}: BoostProps) {
       //     userId: userId
       //   })
       // });
-      const response = await axios.post("/api/v1/users/tonWallet", {wallet_address: walletAddress, userId: userId})
+      const response = await axios.post("/api/v1/users/tonWallet", { wallet_address: walletAddress, userId: userId })
       if (!response) {
         throw new Error(`HTTP error status: ${response}`);
       }
@@ -212,10 +212,10 @@ function Home({goToBoost}: BoostProps) {
       //     tap_remaining: remainedEnergy - tapAmount
       //   })
       // });
-      console.log("---->", tapAmount);
-      const response =  await axios.post("/api/v1/users/taps", {
+      console.log("---->", levelData?.level);
+      const response = await axios.post("/api/v1/users/taps", {
         wallet_address: walletAddress,
-        tap_amount: Number(levelData?.level) -1 ,
+        tap_amount: Number(levelData?.level) - 1,
         tap_remaining: remainedEnergy - tapAmount
       })
       // if (!response.ok) {
@@ -306,22 +306,22 @@ function Home({goToBoost}: BoostProps) {
     }
     console.log('============================================================')
     const tapAmount = event.touches.length;
-    console.log('tapAmount',tapAmount)
+    console.log('tapAmount', tapAmount)
     if (remainedEnergy - tapAmount >= 0 && tapAmount >= 1) {
       setRemainedEnergy((prevEnergy) => prevEnergy - tapAmount);
       setTapCount((prevCount) => prevCount + (tapAmount * Number(levelData?.level) - 1));
       const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
-      console.log('newTotalTaps',newTotalTaps)
+      console.log('newTotalTaps', newTotalTaps)
       setTotalTaps(newTotalTaps);
-      
+
       // setToken(token + (length * Number(levelData?.level) - 1)); #what to do for here to multiply???
-      
+
       localStorage.setItem("totalTaps", newTotalTaps.toString());
       console.log('Number(levelData?.level) - 1', Number(levelData?.level) - 1)
       console.log('level', Number(levelData?.level))
       // for (let i = 1 ; i <= Number(levelData?.level) - 1; i++)
       fetchCreateTap(address, tapAmount);
-      
+
       console.log('============================================================')
       handleMultiTouchStart(event);
     }
@@ -332,7 +332,7 @@ function Home({goToBoost}: BoostProps) {
       handleClick({
         ...touch,
         target: event.target,
-        preventDefault: () => {},
+        preventDefault: () => { },
         clientX: touch.clientX,
         clientY: touch.clientY,
         touches: [],
@@ -410,11 +410,10 @@ function Home({goToBoost}: BoostProps) {
       </div>
 
       <div
-        className={`relative max-sm:my-0 w-72 h-72 rounded-full bg-cover aspect-square  flex-shrink-0 items-center justify-center ${
-          remainedEnergy > 0
+        className={`relative max-sm:my-0 w-72 h-72 rounded-full bg-cover aspect-square  flex-shrink-0 items-center justify-center ${remainedEnergy > 0
             ? "cursor-pointer"
             : "cursor-not-allowed opacity-50"
-        }`}
+          }`}
         ref={bodyRef}
         // style={{ backgroundImage: `url(${coinImage})` }}
         onTouchStart={(e) => {
