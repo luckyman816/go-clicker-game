@@ -14,7 +14,7 @@ interface BoostProps {
   goToBoost: () => void;
 }
 function Home({goToBoost}: BoostProps) {
-  const backendUrl = "https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/"
+  const backendUrl = "https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com"
   const address = useTonAddress();
   const { remainedEnergy, setRemainedEnergy, startRecovery, stopRecovery } =
     useEnergy();
