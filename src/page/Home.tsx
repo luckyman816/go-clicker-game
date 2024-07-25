@@ -96,8 +96,8 @@ function Home({ goToBoost }: BoostProps) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
       const response = await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress });
-      // const res = await response.data;
-      if (response && response.data) {
+      const res = await response.data;
+      if (res && res.data) {
         setLevelData({
           level: response?.data?.currentLevel,
           coinsToLevelUp: response?.data?.coinsToLevelUp
@@ -284,7 +284,7 @@ function Home({ goToBoost }: BoostProps) {
         String(remainedEnergy - tapAmount)
       );
       setTapCount(tapCount + (tapAmount * Number(levelData?.level) - 1));
-      const newTotalTaps = totalTaps + (tapAmount * 2);
+      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
       setTotalTaps(newTotalTaps);
       localStorage.setItem("totalTaps", newTotalTaps.toString());
       fetchCreateTap(address, tapAmount);
