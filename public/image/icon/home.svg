@@ -1,0 +1,31 @@
+<svg
+  version="1.1"
+  id="Layer_1"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  viewBox="0 0 64 64"
+  xml:space="preserve"
+  width="64px"
+  height="64px"
+>
+  <g>
+    <!-- Roof -->
+    <polygon
+      style="fill:#038bbf;" 
+      points="32,2 2,32 9,32 32,9 55,32 62,32 "
+    />
+    <!-- Left Wall -->
+    <polygon
+      style="fill:#e6d0b4;"
+      points="9,32 9,62 25,62 25,45 39,45 39,62 55,62 55,32 32,9 "
+    />
+    <!-- Door -->
+    <rect
+      x="25"
+      y="45"
+      width="14"
+      height="17"
+      style="fill:#fe015a;"
+    />
+  </g>
+</svg>

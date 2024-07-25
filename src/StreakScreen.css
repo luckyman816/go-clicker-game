@@ -1,0 +1,124 @@
+/* StreakScreen.css */
+
+.container {
+    background-color: #151515;
+    color: white;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 10px;
+    height: 100vh;
+    /* Ensure the container takes the full height of the viewport */
+    justify-content: space-between;
+    /* Space out the elements, pushing the button to the bottom */
+}
+
+.content-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+}
+
+.streak-header {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: #FFD328;
+    text-shadow: 0 0 10px #FFD328;
+}
+
+.day-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    /* Ensure exactly 4 items per row */
+    gap: 5px;
+    justify-items: center;
+    width: 90%;
+    /* Ensure grid takes full width */
+}
+
+.day-card {
+    width: 80px;
+    /* Adjusted width */
+    height: 80px;
+    /* Set height to maintain square aspect ratio */
+    background: radial-gradient(68.4% 68.4% at 51.16% 53.22%, #1E4759 0%, #111a23 100%);
+    border-radius: 8px;
+    /* Smaller border radius */
+    padding: 2px;
+    /* Reduced padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.day-card .day {
+    font-size: 0.9em;
+    /* Adjusted font size */
+    font-weight: bold;
+    margin-bottom: 6px;
+    color: #fffefc;
+}
+
+.day-card .coin {
+    width: 32px;
+    height: 32px;
+    background-color: #FFD328;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+}
+
+.day-card .coin span {
+    color: #151515;
+    font-size: 0.8em;
+    /* Adjusted font size */
+}
+
+.day-card .amount {
+    font-size: 0.9em;
+    /* Adjusted font size */
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.day-card.claimed {
+    background: #604903;
+    /* Green background for claimed days */
+    color: white;
+}
+
+.day-card.available {
+    border: 2px solid yellow;
+}
+
+.day-card.upcoming {
+    background-color: #f0f0f0;
+    /* Default background for upcoming days */
+    color: #333;
+}
+
+/* Adjusted button styles */
+.button {
+    padding: 8px 12px;
+    /* Reduced padding */
+    font-size: 0.8em;
+    /* Adjusted font size */
+    background-color: #FFD328;
+    color: #151515;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #f0c804;
+    /* Darker yellow on hover */
+}

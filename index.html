@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+		<script src="https://telegram.org/js/telegram-web-app.js"></script>
+		<script async defer src="https://tools.luckyorange.com/core/lo.js?site-id=39437fd6"></script>
+		<title>Go! Tap</title>
+	</head>
+	<body>
+		<div id="root"></div>
+		<script type="module" src="/src/main.tsx"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded', function () {
+			    window.Telegram.WebApp.ready();
+			    window.Telegram.WebApp.expand();
+			});
+		</script>
+	</body>
+</html>
