@@ -221,8 +221,9 @@ function Home({ goToBoost }: BoostProps) {
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-
+      
       const data = await response.data();
+      console.log("taps----------->response----------->", data)
       if (!data.error) {
         setRemainedEnergy(data.data.remaining);
       }
