@@ -96,6 +96,7 @@ function Home({ goToBoost }: BoostProps) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
       await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress }).then((res) => {
+        console.log("iasdffffffffffffffffffffff", res.data);
         if (res && res.data) {
           setLevelData({
             level: res?.data?.currentLevel,
