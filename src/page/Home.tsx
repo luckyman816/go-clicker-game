@@ -221,7 +221,7 @@ function Home({ goToBoost }: BoostProps) {
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-      
+
       const data = await response.data();
       console.log("taps----------->response----------->", data)
       if (!data.error) {
@@ -285,7 +285,7 @@ function Home({ goToBoost }: BoostProps) {
         String(remainedEnergy - tapAmount)
       );
       setTapCount(tapCount + (tapAmount * Number(levelData?.level) - 1));
-      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
+      const newTotalTaps = totalTaps + (tapAmount * 2);
       setTotalTaps(newTotalTaps);
       localStorage.setItem("totalTaps", newTotalTaps.toString());
       fetchCreateTap(address, tapAmount);
