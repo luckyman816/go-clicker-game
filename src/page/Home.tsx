@@ -15,7 +15,7 @@ interface BoostProps {
   goToBoost: () => void;
 }
 function Home({goToBoost}: BoostProps) {
-  const backendUrl = "https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com"
+  // const backendUrl = "https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com"
   const address = useTonAddress();
   const { remainedEnergy, setRemainedEnergy, startRecovery, stopRecovery } =
     useEnergy();
@@ -97,6 +97,7 @@ function Home({goToBoost}: BoostProps) {
       // }
       const response =await axios.post("/api/v1/users/user-lvl", {wallet_address: walletAddress});
       // const res = await response.data;
+      console.log("--------asdfsadfadsfasdf--------->", response.data);
       if (response && response.data) {
         setLevelData({
           level: response?.data?.level,
