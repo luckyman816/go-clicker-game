@@ -5,6 +5,7 @@ import { isMobile } from "react-device-detect";
 import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
 import { useEnergy } from "../hooks/EnergyContext";
 import { ThreeDots } from "react-loader-spinner";
+import axios from "../utils/api"
 
 interface LevelData {
   coinsToLevelUp: number;
@@ -81,24 +82,25 @@ function Home({goToBoost}: BoostProps) {
     setLevelDataLoading(true);
     try {
       console.log("abc", walletAddress);
-      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/user-lvl`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          wallet_address: walletAddress
-        })
-      });
+      // const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/user-lvl`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({
+      //     wallet_address: walletAddress
+      //   })
+      // });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error status: ${response.status}`);
-      }
-      const res = await response.json();
-      if (res && res.data) {
+      // if (!response.ok) {
+      //   throw new Error(`HTTP error status: ${response.status}`);
+      // }
+      const response =await axios.post("/api/v1/users/user-lvl", {wallet_address: walletAddress});
+      // const res = await response.data;
+      if (response && response.data) {
         setLevelData({
-          level: res?.data?.level,
-          coinsToLevelUp: res?.data?.coinsToLevelUp
+          level: response?.data?.level,
+          coinsToLevelUp: response?.data?.coinsToLevelUp
         });
       }
       setLevelDataLoading(false);
@@ -113,19 +115,19 @@ function Home({goToBoost}: BoostProps) {
     if (isFetching.current) return;
     isFetching.current = true;
     try {
-      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/tonWallet`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          wallet_address: walletAddress,
-          userId: userId
-        })
-      });
-
-      if (!response.ok) {
-        throw new Error(`HTTP error status: ${response.status}`);
+      // const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/tonWallet`, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json"
+      //   },
+      //   body: JSON.stringify({
+      //     wallet_address: walletAddress,
+      //     userId: userId
+      //   })
+      // });
+      const response = await axios.post("/api/v1/users/tonWallet", {wallet_address: walletAddress, userId: userId})
+      if (!response) {
+        throw new Error(`HTTP error status: ${response}`);
       }
     } catch (error) {
       console.error("There was a problem with the fetch operation:", error);
