@@ -8,8 +8,8 @@ import { ThreeDots } from "react-loader-spinner";
 import axios from "../utils/api"
 
 interface LevelData {
-  coinsToLevelUp: number;
   level: number;
+  coinsToLevelUp: number;
 }
 interface BoostProps {
   goToBoost: () => void;
@@ -96,11 +96,11 @@ function Home({ goToBoost }: BoostProps) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
       await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress }).then((res) => {
-        console.log("iasdffffffffffffffffffffff", res.data);
-        if (res && res.data) {
+        console.log("iasdffffffffffffffffffffff", res.data.currentLevel, res.data.coinsToLevelUp);
+        if (res.data) {
           setLevelData({
-            level: res?.data?.currentLevel,
-            coinsToLevelUp: res?.data?.coinsToLevelUp
+            level: res.data?.currentLevel,
+            coinsToLevelUp: res.data?.coinsToLevelUp
           });
         }
 
