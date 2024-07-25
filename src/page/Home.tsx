@@ -81,7 +81,7 @@ function Home({goToBoost}: BoostProps) {
     setLevelDataLoading(true);
     try {
       console.log("abc", walletAddress);
-      const response = await fetch(`${backendUrl}/api/v1/users/user-lvl`, {
+      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/user-lvl`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -113,7 +113,7 @@ function Home({goToBoost}: BoostProps) {
     if (isFetching.current) return;
     isFetching.current = true;
     try {
-      const response = await fetch(`${backendUrl}/api/v1/users/tonWallet`, {
+      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/tonWallet`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -139,7 +139,7 @@ function Home({goToBoost}: BoostProps) {
 
     isFetching.current = true;
     try {
-      const response = await fetch(`${backendUrl}/api/v1/users/getTodaysTap`, {
+      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/getTodaysTap`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -166,7 +166,7 @@ function Home({goToBoost}: BoostProps) {
     if (isFetching.current) return;
     isFetching.current = true;
     try {
-      const response = await fetch(`${backendUrl}/api/v1/users/totalTaps`, {
+      const response = await fetch(`https://go-staging-v21-dot-health-hero-bot.oa.r.appspot.com/api/v1/users/totalTaps`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
