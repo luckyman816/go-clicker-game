@@ -95,14 +95,16 @@ function Home({ goToBoost }: BoostProps) {
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-      const response = await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress });
-      const res = await response.data;
-      if (res && res.data) {
-        setLevelData({
-          level: response?.data?.currentLevel,
-          coinsToLevelUp: response?.data?.coinsToLevelUp
-        });
-      }
+      await axios.post("/api/v1/users/user-lvl", { wallet_address: walletAddress }).then((res) => {
+        if (res && res.data) {
+          setLevelData({
+            level: res?.data?.currentLevel,
+            coinsToLevelUp: res?.data?.coinsToLevelUp
+          });
+        }
+
+      });
+
       setLevelDataLoading(false);
     } catch (error) {
       setLevelDataLoading(false);
@@ -411,8 +413,8 @@ function Home({ goToBoost }: BoostProps) {
 
       <div
         className={`relative max-sm:my-0 w-72 h-72 rounded-full bg-cover aspect-square  flex-shrink-0 items-center justify-center ${remainedEnergy > 0
-            ? "cursor-pointer"
-            : "cursor-not-allowed opacity-50"
+          ? "cursor-pointer"
+          : "cursor-not-allowed opacity-50"
           }`}
         ref={bodyRef}
         // style={{ backgroundImage: `url(${coinImage})` }}
