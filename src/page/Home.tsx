@@ -311,7 +311,7 @@ function Home({ goToBoost }: BoostProps) {
     console.log('============================================================')
     const tapAmount = event.touches.length;
     console.log('tapAmount', tapAmount)
-    if (remainedEnergy - tapAmount >= 0 && tapAmount >= 1) {
+    if (remainedEnergy - tapAmount >= 0 && tapAmount >= 1 && tapAmount < 4) {
       setRemainedEnergy((prevEnergy) => prevEnergy - tapAmount);
       setTapCount((prevCount) => prevCount + (tapAmount * Number(levelData?.level)));
       const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level));
