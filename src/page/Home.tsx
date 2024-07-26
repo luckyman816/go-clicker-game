@@ -48,6 +48,7 @@ function Home({ goToBoost }: BoostProps) {
       //   address: address,
       //   user: { id: "3a5a05f2-af44-4ce0-905e-f00bcd7bfb14" }
       // };
+      console.log("address, userId----------->", address, webapp["user"]["id"]);
       if (webapp && webapp["user"]) {
         await fetchData(address, webapp["user"]["id"]);
         await fetchTodaysTap(address);
