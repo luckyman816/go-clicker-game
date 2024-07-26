@@ -218,7 +218,7 @@ function Home({ goToBoost }: BoostProps) {
       console.log("---->", levelData?.level);
       const response = await axios.post("/api/v1/users/taps", {
         wallet_address: walletAddress,
-        tap_amount: Number(levelData?.level) -1,
+        tap_amount: tapAmount,
         tap_remaining: remainedEnergy - tapAmount
       })
       // if (!response.ok) {
