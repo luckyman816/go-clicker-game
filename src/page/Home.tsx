@@ -255,7 +255,7 @@ function Home({ goToBoost }: BoostProps) {
 
     const newDiv = document.createElement("div");
     // newDiv.textContent = "+1";
-    newDiv.textContent = levelData?.level === 1 ? '+1' : `+${Number(levelData?.level) - 1}`;
+    newDiv.textContent = levelData?.level === 1 ? '+1' : `+${Number(levelData?.level)}`;
 
     newDiv.style.position = "absolute";
     newDiv.style.left = `${x}px`;
