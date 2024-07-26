@@ -218,13 +218,13 @@ function Home({ goToBoost }: BoostProps) {
       console.log("---->", levelData?.level);
       const response = await axios.post("/api/v1/users/taps", {
         wallet_address: walletAddress,
-        tap_amount: 1,
+        tap_amount: Number(levelData?.level) -1,
         tap_remaining: remainedEnergy - tapAmount
       })
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-
+      setTotalTaps((pre) => pre + Number(levelData?.level) -1);
       const data = await response.data();
       console.log("taps----------->response----------->", data)
       if (!data.error) {
