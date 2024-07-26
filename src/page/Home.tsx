@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useState, useRef, useEffect } from "react";
 import ProgressBar from "../component/ProgressBar";
-import { isMobile } from "react-device-detect";
+// import { isMobile } from "react-device-detect";
 import { TonConnectButton, useTonAddress } from "@tonconnect/ui-react";
 import { useEnergy } from "../hooks/EnergyContext";
 import { ThreeDots } from "react-loader-spinner";
@@ -421,7 +421,7 @@ function Home({ goToBoost }: BoostProps) {
         ref={bodyRef}
         // style={{ backgroundImage: `url(${coinImage})` }}
         onTouchStart={(e) => {
-          if (!isMobile) return;
+          // if (!isMobile) return;
           setIsTouch(true);
           handleTouchStart();
           handleTouch(e);
