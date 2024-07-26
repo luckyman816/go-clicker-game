@@ -99,8 +99,8 @@ function Home({ goToBoost }: BoostProps) {
         console.log("iasdffffffffffffffffffffff", res.data);
         if (res.data) {
           setLevelData({
-            level: 1,
-            coinsToLevelUp: 1
+            level: res.data?.currentLevel,
+            coinsToLevelUp: res.data?.coinsToLevelUp
           });
         }
 
