@@ -289,6 +289,7 @@ function Home({ goToBoost }: BoostProps) {
       );
       setTapCount(tapCount + (tapAmount * Number(levelData?.level) - 1));
       const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
+      console.log("newTotalTaps: ", newTotalTaps, totalTaps);
       setTotalTaps(newTotalTaps);
       localStorage.setItem("totalTaps", newTotalTaps.toString());
       fetchCreateTap(address, tapAmount);
@@ -315,7 +316,7 @@ function Home({ goToBoost }: BoostProps) {
       setRemainedEnergy((prevEnergy) => prevEnergy - tapAmount);
       setTapCount((prevCount) => prevCount + (tapAmount * Number(levelData?.level) - 1));
       const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
-      console.log('newTotalTaps', newTotalTaps)
+      console.log('newTotalTouchs: ', newTotalTaps, totalTaps)
       setTotalTaps(newTotalTaps);
 
       // setToken(token + (length * Number(levelData?.level) - 1)); #what to do for here to multiply???
