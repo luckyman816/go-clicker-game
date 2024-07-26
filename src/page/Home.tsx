@@ -224,7 +224,6 @@ function Home({ goToBoost }: BoostProps) {
       // if (!response.ok) {
       //   throw new Error(`HTTP error status: ${response.status}`);
       // }
-      setTotalTaps((pre) => pre + Number(levelData?.level) -1);
       const data = await response.data();
       console.log("taps----------->response----------->", data)
       if (!data.error) {
@@ -287,8 +286,8 @@ function Home({ goToBoost }: BoostProps) {
         "remainedEnergy",
         String(remainedEnergy - tapAmount)
       );
-      setTapCount(tapCount + (tapAmount * Number(levelData?.level) - 1));
-      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
+      setTapCount(tapCount + (tapAmount * Number(levelData?.level)));
+      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level));
       console.log("newTotalTaps: ", newTotalTaps, totalTaps);
       setTotalTaps(newTotalTaps);
       localStorage.setItem("totalTaps", newTotalTaps.toString());
@@ -314,15 +313,15 @@ function Home({ goToBoost }: BoostProps) {
     console.log('tapAmount', tapAmount)
     if (remainedEnergy - tapAmount >= 0 && tapAmount >= 1) {
       setRemainedEnergy((prevEnergy) => prevEnergy - tapAmount);
-      setTapCount((prevCount) => prevCount + (tapAmount * Number(levelData?.level) - 1));
-      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level) - 1);
+      setTapCount((prevCount) => prevCount + (tapAmount * Number(levelData?.level)));
+      const newTotalTaps = totalTaps + (tapAmount * Number(levelData?.level));
       console.log('newTotalTouchs: ', newTotalTaps, totalTaps)
       setTotalTaps(newTotalTaps);
 
       // setToken(token + (length * Number(levelData?.level) - 1)); #what to do for here to multiply???
 
       localStorage.setItem("totalTaps", newTotalTaps.toString());
-      console.log('Number(levelData?.level) - 1', Number(levelData?.level) - 1)
+      console.log('Number(levelData?.level) - 1', Number(levelData?.level))
       console.log('level', Number(levelData?.level))
       // for (let i = 1 ; i <= Number(levelData?.level) - 1; i++)
       fetchCreateTap(address, tapAmount);
